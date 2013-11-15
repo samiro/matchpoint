@@ -20,9 +20,19 @@ Consulta todas las necesidades que hay en el sistema
 Consulta una necesidad por ID
 
 
+* GET http://localhost:8080/api/need/<ID>/offers
+
+Consulta las ofertas de una necesidad
+
+
 * GET http://localhost:8080/api/user/<ID>/needs
 
 Consulta la necesidades que ha publicado un usuario
+
+
+* GET http://localhost:8080/api/user/<ID>/offers
+
+Consulta las ofertas que ha publicado un usuario
 
 
 * GET http://localhost:8080/api/user/<ID>
@@ -40,6 +50,10 @@ Consulta todos los servicios que pueden prestar las pymes o que los clientes pue
 Consulta la información específica de un servicio
 
 
+* GET http://localhost:8080/api/offer/<ID>
+
+Consulta una oferta por ID
+
 
 
 
@@ -56,3 +70,13 @@ Publicar una necesidad de un usuario
 > local_ubication: "true" o "false". Si necesita que sea local la oferta.
 > ubication: Ubicación en caso de que la anterior sea "true"
 
+
+
+* POST http://localhost:8080/api/offer
+
+Publicar una oferta a una necesidad
+
+> need: ID de la necesidad
+> delivery_time: Un número de días que tardará en resolver la necesidad
+> costo: Valor que cobra por realizar
+> comment: Comentario que hace a la oferta
