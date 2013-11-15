@@ -7,7 +7,7 @@ from models.models import *
 class NeedHandler(webapp2.RequestHandler):
     def get(self, id=None):
         res = {}
-
+        
         if ( id != None ):
             need = Need.get_by_id(int(id))
             res = need.to_json()
@@ -20,14 +20,15 @@ class NeedHandler(webapp2.RequestHandler):
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.out.write(res)
 
+
     def post(self):
         need = Need()
         need.user = UserMP.get_by_id(6614661952700416)
-        need.service = Service.get_by_id(int(self.request.POST.get('id')))
+        need.service = Service.get_by_id(int(self.request.POST.get('service')))
         need.delivery_time = self.request.POST.get('delivery_time', None)
         need.budget = self.request.POST.get('budget', None)
-        need.life = self.request.POST.get('life', None)
-        need.local_ubication = self.request.POST.get('local_ubication', False)
+        need.life = int(self.request.POST.get('life', 5))
+        need.local_ubication = (self.request.POST.get('local_ubication') == 'true')
         need.ubication = self.request.POST.get('ubication', None)
         need.put()
 

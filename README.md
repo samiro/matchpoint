@@ -10,7 +10,7 @@ API REST
 
 GET
 
-* http://localhost:8080/api/needs
+* http://localhost:8080/api/need
 
 Consulta todas las necesidades que hay en el sistema
 
@@ -30,7 +30,7 @@ Consulta la necesidades que ha publicado un usuario
 Consulta la información de un usuario
 
 
-* http://localhost:8080/api/services
+* http://localhost:8080/api/service
 
 Consulta todos los servicios que pueden prestar las pymes o que los clientes pueden solicitar
 

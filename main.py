@@ -77,11 +77,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/api/needs' , NeedHandler),
+    webapp2.Route(r'/api/need' , NeedHandler),
     webapp2.Route(r'/api/need/<id:\d+>' , NeedHandler),
     webapp2.Route(r'/api/user/<id:\d+>' , UserMPHandler),
     webapp2.Route(r'/api/user/<id:\d+>/<data:needs>' , UserMPHandler),
-    webapp2.Route(r'/api/services' , ServiceHandler),
+    webapp2.Route(r'/api/service' , ServiceHandler),
     webapp2.Route(r'/api/service/<id:\d+>' , ServiceHandler),
 ], debug=True)
 

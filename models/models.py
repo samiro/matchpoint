@@ -51,7 +51,7 @@ class Need(db.Model):
 
 	delivery_time = db.StringProperty(default=None)
 	budget = db.StringProperty(default=None)
-	life = db.DateProperty(default=None)
+	life = db.IntegerProperty(default=None)
 	local_ubication = db.BooleanProperty(default=False)
 	ubication = db.StringProperty(default=None)
 	
