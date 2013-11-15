@@ -8,7 +8,7 @@ Plataforma para que clientes obtengan ofertas en forma de subasta de pymes
 API REST
 ========
 
-#GET
+##GET
 
 * GET http://localhost:8080/api/need
 
@@ -40,7 +40,7 @@ Consulta todos los servicios que pueden prestar las pymes o que los clientes pue
 Consulta la información específica de un servicio
 
 
-#POST
+##POST
 
 * POST http://localhost:8080/api/need
 
