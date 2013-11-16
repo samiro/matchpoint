@@ -11,12 +11,33 @@ handlers:
 
 - url: /api/.*
   script: main.app
-  http_headers: 
-  	Access-Control-Allow-Origin: *
+
+- url: /admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+
+- url: /js/(.*)
+  static_files: templates/front-end/js/\1
+  upload: templates/front-end/js/(.*)
+
+- url: /css/(.*)
+  static_files: templates/front-end/css/\1
+  upload: templates/front-end/css/(.*)
+
+- url: /img/(.*)
+  static_files: templates/front-end/img/\1
+  upload: templates/front-end/img/(.*)
+
+- url: /files/(.*)
+  static_files: templates/front-end/files/\1
+  upload: templates/front-end/files/(.*)
+
+- url: /
+  static_files: templates/front-end/index.ico
+  upload: templates/front-end/index\.ico
 
 - url: .*
   script: main.app_html
-
 
 libraries:
 - name: pycrypto

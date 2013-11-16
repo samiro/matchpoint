@@ -1,10 +1,12 @@
 function publishController( $scope, $http ){
 
+	$scope.url_user = 'http://matchpointapp.appspot.com/api/user'
+	
 	$scope.life = 5;
 
-	$scope.url_publish = 'http://172.20.15.40:8080/api/need';
+	$scope.url_publish = 'http://matchpointapp.appspot.com/api/need';
 
-	$scope.url_services = 'http://172.20.15.40:8080/api/service';
+	$scope.url_services = 'http://matchpointapp.appspot.com/api/service';
 	
 	$scope.getAllServices = function(){
 
@@ -20,7 +22,28 @@ function publishController( $scope, $http ){
 		} );
 	}
 
-	$scope.publish = function(){
+	$scope.showVideo = function( url ){
+		$('.video-reel').magnificPopup({ 
+		  	items: {
+      			src: url
+    		},
+    		type: 'iframe' 
+		});
+	}
+
+	$scope.getAllNeedsByUser = function(){
+
+		var xhr = $http.get( $scope.url_user + '/' + window.user.id + '/needs' );
+
+		xhr.success( function( data ){
+			
+			console.info( data );
+
+			$scope.needs_user = data.needs;
+		} );
+	}	
+
+	$scope.publishNeed = function(){
 
 		if( $scope.city == 'any' ){
 			$scope.local_ubication = 'false'
@@ -31,6 +54,7 @@ function publishController( $scope, $http ){
 		}
 
 		$scope.json_data = {
+			user_id: window.user.id,
 			description: $scope.description,
 			service: $scope.category,
 			local_ubication: $scope.local_ubication,
@@ -51,6 +75,11 @@ function publishController( $scope, $http ){
 					$scope.json_data );*/
 
 		xhr.success( function( data ){
+			
+			if( data.saved ){
+				$scope.getAllNeedsByUser();
+				$.scrollTo( "#separator", 500 );
+			}
 			console.info( data );
 		} );
 

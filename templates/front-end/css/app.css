@@ -55,7 +55,7 @@ button {
  * HTML Tags
  *---------------------------------------*/
 body {
-  background: url("../img/bg.jpg") no-repeat center top fixed;
+  /*background: url("../img/bg.jpg") no-repeat center top fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -278,3 +278,25 @@ nav li {
   background: url(../img/icons-sprite.png) 0 -50px no-repeat; }
 
 /*@ sourceMappingURL=app.css.map */
+
+/* Images styles */
+.icon_needs{
+  width: 50%;
+  height: 70%;
+}
+
+/*  Separator*/
+#separator{
+  border-top: 20px solid #FBB03B;
+  border-bottom: 20px solid #F7931E;
+}
+
+/* Search Container */
+#search_container{
+   background: url("../img/bg.jpg") no-repeat center top fixed;
+   background-size: 100% auto;
+}
+/* Description needs */
+.needs_description{
+  font-size: 1.5em;
+}

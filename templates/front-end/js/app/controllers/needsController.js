@@ -1,10 +1,10 @@
 function needsController( $scope, $http ){
 
-	$scope.url = 'http://172.20.15.40:8080/api/user'
+	$scope.url = 'http://matchpointapp.appspot.com/api/user'
 
 	$scope.getAllByUser = function( id_user ){
 
-		var xhr = $http.get( $scope.url + '/' + id_user + '/needs' );
+		var xhr = $http.get( $scope.url + '/' + window.user.id + '/needs' );
 
 		xhr.success( function( data ){
 			

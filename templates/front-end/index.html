@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es-CO" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>matchpoint</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+  <!-- Magnific Popup core CSS file -->
+  <link rel="stylesheet" href="js/lib/magnific_popup/magnific_popup.css"> 
+
+  <!-- Roboto: Google Web Font -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="content-wrapper" ng-controller='publishController' >
+    <div id='search_container'>
+      <header class="container">
+        <div class="logo">
+          <a href="/"><img src="img/logo.png" alt="MatchPoint"></a>
+        </div>
+        <p class="slogan">En match<b>point</b> le encontramos una solución cuando, <br>como y a cuanto usted lo necesite.</p>
+        <div class="video-reel">
+          <a id='start_video' href="#" class="video" ng-click='showVideo( "http://www.youtube.com/watch?v=InxN9F3HokM" )'>
+            Dale Play al video
+          </a>
+        </div>
+      </header>
+      <div class="main_content container">
+        <!--  #end block content-->      
+        <form action="" id="form-what-do-you-need" class="row">
+          <input type="text" name="what" id="what" placeholder="Escribe lo que necesitas..." required ng-model='description'>
+          <fieldset>
+
+            <select name="category" id="category" ng-init='getAllServices()' ng-model='category'>
+              <option value="0">Seleccione una categoría...</option>
+              <option value='{{ service.id }}' ng-repeat="service in services">{{ service.name }}</option>  
+            </select>
+
+            <select name="city" id="city" ng-model='city'>
+              <option value="0">En que ciudad preriefres el servicio...</option>
+              <option value="any">Cualquier ciudad</option>
+              <option value="pereira">Pereira</option>
+              <option value="cucuta">Cucuta</option>
+              <option value="bogota">Bogot&aacute;</option>
+              <option value="medellin">Medellin</option>
+              <option value="cartagena">Cartagena</option>
+              <option value="ibague">Ibagu&eacute;</option>
+            </select>
+
+            <select name="deadline" id="deadline" ng-model='deadline'>
+              <option value="0">Cuanto tiempo tienes...</option>
+              <option value="De 1 a 2 semanas">De 1 a 2 semanas</option>
+              <option value="De 2 a 5 semanas">De 2 a 5 semanas</option>
+              <option value="Mas de 5 semanas">M&aacute;s de 5 semanas</option>
+            </select>
+
+            <select name="budget" id="budget" ng-model='budget'>
+              <option value="0">Tu presupuesto...</option>
+              <option value="De $0 a $150.000 pesos">De $0 a $150.000 pesos</option>
+              <option value="De $150.000 de $300.000 pesos">De $150.000 a $300.000 pesos</option>
+              <option value="De $300.000 de $450.000 pesos">De $300.000 a $450.000 pesos</option>
+              <option value="Mas de $450.000 pesos">M&aacute;s de $450.000 pesos</option>
+            </select>
+
+          </fieldset>
+          <input type="submit" id="submit" value="Publica tu necesidad" class="icon" ng-click='publishNeed()'>
+        </form>      
+
+        <section class="tagline row">
+          <h4>Match<b>point</b></h4>
+          <p>
+            Es la plataforma que permite <strong>conectar tus necesidades con especialistas,</strong>  para que los que saben,<br> hagan lo que saben, y tu te dediques a las COSAS IMPORTANTES <b>de tu negocio</b>.
+          </p>
+        </section>
+      </div>
+
+    <!--  #end block content-->
+    </div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="#" class="about">Lo que ofrezco</a></li>
+        <li><a href="#" class="gplus-signin">Entrar con Google+</a></li>
+      </ul>
+    </nav>
+
+    <div id="separator"></div>
+
+    <div id="dynamic_content" ng-init='getAllNeedsByUser()' class='main_content container'>
+      <h3 class='well'>Tus publicaci&oacute;nes</h3>
+      <div class='row well' ng-repeat="need in needs_user | orderBy:'-publish'">
+        <div class="col-xs-2 col-sm-2 col-md-2" >
+          <figure><img src="img/icon-needs.png" alt="" class='icon_needs'></figure>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6" >
+          <span class="needs_description">{{ need.description }}</span>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-2" >
+          <figure><img src="img/icon-time.png" alt=""></figure>{{ need.delivery_time }}
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-2" >
+          <figure><img src="img/icon-money.png" alt=""></figure>
+          {{ need.budget }}
+        </div>
+
+      </div>  
+    </div>
+  </div>
+  <!-- Scripts -->
+   <script src='js/app/init.js'></script>
+  <script src='js/lib/angular.js'></script>
+
+  <script src='js/app/controllers/publishController.js'></script>
+
+  <script src='js/app/controllers/videoController.js'></script>
+
+  <script src='js/app/controllers/needsController.js'></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src='js/lib/jquery.scrollTo.min.js'></script>
+
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+  <script src="js/app.js" type="text/javascript"></script>
+
+  <!-- Magnific Popup core JS file -->
+  <script src="js/lib/magnific_popup/magnific_popup.js"></script> 
+</body>
+</html>

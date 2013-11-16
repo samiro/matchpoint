@@ -30,7 +30,7 @@ class NeedHandler(webapp2.RequestHandler):
 
     def post(self):
         need = Need()
-        need.user = UserMP.get_by_id(6578378068983808)
+        need.user = UserMP.get_by_id(int(self.request.POST.get('user_id')))
         need.description = self.request.POST.get('description', None)
         need.delivery_time = self.request.POST.get('delivery_time', None)
         need.budget = self.request.POST.get('budget', None)
@@ -121,7 +121,7 @@ class UserMPLoginHandler(webapp2.RequestHandler):
         res = {}
         if email != "":
             res["error"] = 0
-            u = UserMP.gql('WHERE email = :1', 'crisanto112@gmail.com').get()
+            u = UserMP.gql('WHERE email = :1', email).get()
             if u:
                 res = {
                 "action": "exist",

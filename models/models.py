@@ -68,6 +68,7 @@ class Need(db.Model):
 		r["id"] = str(self.key().id())
 		r["user"] = self.user.to_dict()
 		r["service"] = self.service.to_dict()
+		r["offers"] = [offer.to_dict() for offer in self.offers]
 		return r
 
 	def to_json(self):
