@@ -93,7 +93,7 @@ class Offer(db.Model):
 		r = dict([(p, unicode(getattr(self, p))) for p in self.properties()])
 		r["id"] = str(self.key().id())
 		r["user"] = self.user.to_dict()
-		r["need"] = self.need.to_dict()
+		#r["need"] = self.need.to_dict()
 		return r
 
 	def to_json(self):

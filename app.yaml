@@ -32,9 +32,9 @@ handlers:
   static_files: templates/front-end/files/\1
   upload: templates/front-end/files/(.*)
 
-- url: /
-  static_files: templates/front-end/index.ico
-  upload: templates/front-end/index\.ico
+- url: .*
+  static_files: templates/front-end/index.html
+  upload: templates/front-end/index\.html
 
 - url: .*
   script: main.app_html
