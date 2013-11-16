@@ -111,3 +111,32 @@ class UserMPHandler(webapp2.RequestHandler):
 
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.out.write(res)
+
+
+
+class UserMPLoginHandler(webapp2.RequestHandler):
+    def post(self):
+        email = self.request.POST.get("email", "")
+        res = {}
+        if email != "":
+            res["error"] = 0
+            u = UserMP.gql('WHERE email = :1', 'crisanto112@gmail.com').get()
+            if u:
+                res = {
+                "action": "exist",
+                "user": u.to_dict()
+                }
+            else:
+                u = UserMP()
+                u.email = email
+                u.put()
+
+                res = {
+                "action": "new",
+                "user": u.to_dict()
+                }
+        else:
+            res = {"error": "no email"}
+
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.out.write(json.dumps(res))
