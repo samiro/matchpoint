@@ -85,4 +85,5 @@ function publishController( $scope, $http ){
 
 		console.info( $scope.json_data );
 	}
+
 }

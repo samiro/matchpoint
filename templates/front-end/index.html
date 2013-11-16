@@ -102,7 +102,7 @@
     <div id="separator"></div>
 
     <div id="dynamic_content" ng-init='getAllNeedsByUser()' class='main_content container'>
-      <h3 class='well'>Tus publicaci&oacute;nes</h3>
+      <h3 class='well'>Tus publicaciones</h3>
       <div class='row well' ng-repeat="need in needs_user | orderBy:'-publish'">
         <div class="col-xs-2 col-sm-2 col-md-2" >
           <figure><img src="img/icon-needs.png" alt="" class='icon_needs'></figure>
@@ -120,6 +120,31 @@
           <figure><img src="img/icon-money.png" alt=""></figure>
           {{ need.budget }}
         </div>
+
+<!--https://lh5.googleusercontent.com/-qee_A6EHqFY/AAAAAAAAAAI/AAAAAAAAABI/1n9UXsAAsKs/s120-c/photo.jpg-->
+        <div class="row main_content container my_offers" ng-repeat='offer in need.offers'>
+          <div class="col-xs-2 col-sm-2 col-md-2" >
+            <figure><img class="avatar" src="{{ offer.user.avatar }}" alt=""></figure>
+          </div>
+
+          <div class="col-xs-5 col-sm-5 col-md-5" >
+            <span class="offers_description">{{ offer.comment }}</span>
+          </div>
+
+          <div class="col-xs-2 col-sm-2 col-md-2" >
+            <figure><img src="img/icon-time.png" alt=""></figure>{{ offer.delivery_time }}
+          </div>
+
+          <div class="col-xs-2 col-sm-2 col-md-2" >
+            <figure><img src="img/icon-money.png" alt=""></figure>
+            {{ offer.cost }}
+          </div>
+
+          <div class="col-xs-1 col-sm-1 col-md-1" >
+            <button type="button" class="btn btn-danger"><i class=".glyphicon .glyphicon-fire"></i>Match</button>
+          </div>
+        </div>
+
 
       </div>  
     </div>

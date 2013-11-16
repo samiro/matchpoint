@@ -29,6 +29,7 @@ class UserMP(db.Model):
 
 	"""
 	email = db.EmailProperty(default=None)
+	avatar = db.StringProperty(default=None)
 	pyme_name = db.StringProperty(default=None)
 	pyme_service = db.ReferenceProperty(Service, default=None)
 	pyme_ubication = db.StringProperty(default=None)
