@@ -15,12 +15,12 @@
 				  	gapi.client.load('oauth2', 'v2', function() {
 			          var request = gapi.client.oauth2.userinfo.get();
 			          request.execute(function(obj){
-			          	var email = 
+			          	var email = obj["email"]
 			          	$.ajax({
 						  type: "POST",
 						  url: "/api/user/login",
 						  data: {
-						  	email: obj["email"]
+						  	email: email
 						  },
 						  dataType: 'json'
 						})
@@ -36,24 +36,24 @@
 							}
 
 							console.log("Consulto la info de Google Plus del Usuario")
-								gapi.client.load('plus','v1', function(){
-							  		var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-							  		request.execute( function( profile ) {
-							  			console.log("Pille la info del usuario")
-							  			console.log(profile)
-							        });
-							  	});
+							gapi.client.load('plus','v1', function(){
+							  	var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+							  	request.execute( function( profile ) {
+							  		console.log("Pille la info del usuario")
+							  		console.log(profile)
+							    });
+							});
 						})
 						.fail(function(error){
+							console.log("Error get user.info")
 						  	console.log(error)
 						})
 			          });
 			        });
 
-
-				  	
-
 				    document.getElementById('signinButton').setAttribute('style', 'display: none');
+
+
 				  } else if (authResult['error']) {
 				    // Se ha producido un error.
 				    // Posibles códigos de error:

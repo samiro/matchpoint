@@ -30,13 +30,14 @@ class NeedHandler(webapp2.RequestHandler):
 
     def post(self):
         need = Need()
-        need.user = UserMP.get_by_id(6614661952700416)
-        need.service = Service.get_by_id(int(self.request.POST.get('service')))
+        need.user = UserMP.get_by_id(6578378068983808)
+        need.description = self.request.POST.get('description', None)
         need.delivery_time = self.request.POST.get('delivery_time', None)
         need.budget = self.request.POST.get('budget', None)
-        need.life = int(self.request.POST.get('life', 5))
+        need.life = int(self.request.POST.get('life', 2))
         need.local_ubication = (self.request.POST.get('local_ubication') == 'true')
         need.ubication = self.request.POST.get('ubication', None)
+        need.service = Service.get_by_id(int(self.request.POST.get('service')))
         need.put()
 
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
